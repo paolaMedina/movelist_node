@@ -1,11 +1,14 @@
-const { DataTypes } = require("sequelize/types");
+const { DataTypes } = require("sequelize");
 const db = require("../db/connection");
 
-const movie = db.define('Movie' {
+const Movie = db.define('Movie', {
     title: {
         type: DataTypes.STRING
     },
     year: {
+        type: DataTypes.STRING
+    },
+    imdbid: {
         type: DataTypes.STRING
     },
     type: {
@@ -16,4 +19,4 @@ const movie = db.define('Movie' {
     }
 });
 
-module.exports = movie;
+module.exports = Movie;
