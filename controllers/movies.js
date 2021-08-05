@@ -53,7 +53,8 @@ const moviesShow = async(req = request, res = response) => {
         const movies = await Movie.findAll({
             where: {
                 type: 'movie'
-            }
+            },
+            attributes: ['title', 'year', 'type', 'poster']
         });
         if (movies) {
             res.json(movies);
