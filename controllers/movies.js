@@ -28,10 +28,13 @@ const moviesLoad = async(req = request, res = response) => {
             if (existElement == null) {
                 let movie = new Movie(body);
                 movie.save();
+            } else {
+                existElement.update(body);
             }
+
         });
         res.status(201).json({
-            msg: 'load actualizada'
+            msg: 'base de datos actualizada'
         });
 
 
@@ -47,12 +50,16 @@ const moviesLoad = async(req = request, res = response) => {
 const moviesShow = async(req = request, res = response) => {
 
     try {
-        const movies = await Movie.findAll();
+        const movies = await Movie.findAll({
+            where: {
+                type: 'movie'
+            }
+        });
         if (movies) {
             res.json(movies);
         } else {
             res.status(404).json({
-                msg: 'No hay datos'
+                msg: 'No hay peliculas para mostrar'
             })
         }
 
