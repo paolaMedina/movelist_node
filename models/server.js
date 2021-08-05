@@ -2,6 +2,11 @@ const express = require('express');
 // const cors = require('cors');
 
 const db = require('../db/connection');
+const {
+    moviesLoad,
+    moviesShow
+} = require('../controllers/movies');
+
 
 class Server {
 
@@ -26,6 +31,8 @@ class Server {
 
     routes() {
 
+        this.app.get('/moviesLoad', moviesLoad);
+        this.app.get('/moviesShow', moviesShow);
 
     }
 
